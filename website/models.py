@@ -14,4 +14,4 @@ class Ice(db.Model):
     target = db.Column(db.Numeric) #float
     actual = db.Column(db.Numeric)
     variance = db.Column(db.Numeric)
-    date = db.Column(db.Date) #data type date   
+    date = db.Column(db.String(20)) #data type date   

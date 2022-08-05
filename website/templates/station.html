@@ -13,6 +13,8 @@
 
     
 
+    
+
     <!-- Java Script for Bootstrap-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -30,8 +32,7 @@
 </head>
 
 <body>
-    
-    <title text-align="center">Assessment Record</title>
+    <title text-align="center">Add Station</title>
      <!--navigation bar and buttons - source Bootstrap website -->
 
     <!--<h3 text-align="center" >Assessment Record</h3>-->
@@ -43,15 +44,10 @@
     <div class = "collapse navbar-collapse" id="navbar">
         <div class = "navbar-nav"> 
             <a class="nav-item nav-link" id = "developers" href="/developers">Developers</a>
-            <a class="nav-item nav-link" id = "developers" href="/station">Station</a>
+            <a class="nav-item nav-link" id = "developers" href="/">Assessment Record</a>
         </div>
     </div>
     </nav>
-
-    <select name = "dropdown">
-        <option value = "Data Structures" selected>Data Structures</option>
-        <option value = "Data Mining">Data Mining</option>
-     </select>
 
     {% with messages = get_flashed_messages(with_categories=true)%}
     {% if messages %}
@@ -77,33 +73,19 @@
     {% endif %}
     {% endwith %}
 
-    <!--The Form-->
+    <!--The form-->
 
     <form method="POST">
-        <h3>Assessment Record</h3>
+        <h3>Station Data</h3>
         <div class="form-group">
             <label for = "stationId">Station ID</label>
             <input type = "text" class = "form-control" id="stationId" name="stationId" placeholder="Enter Station ID" size="4"><br>
 
         </div>
-        <div class="form-group">
-            <label for = "date">Date</label>
-            <input type = "text" class = "form-control" id="date" name="date" placeholder="Enter Date" size="4"> <br>
-
-        </div>
+        
         <div class="form-group">
             <label for = "target">Target</label>
             <input type = "text" class = "form-control" id="target" name="target" placeholder="Display Target from DB" size="4"><br> 
-
-        </div>
-        <div class="form-group">
-            <label for = "actual">Actual</label>
-            <input type = "text" class = "form-control" id="actual" name="actual" placeholder="Enter Observed Value" size="4"> <br>
-
-        </div>
-        <div class="form-group">
-            <label for = "variance">Variance</label>
-            <input type = "text" class = "form-control" id="variance" name="variance" placeholder="Display Variance From Backend" size="4"> <br>
 
         </div>
         <br />
