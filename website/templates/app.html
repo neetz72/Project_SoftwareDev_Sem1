@@ -10,6 +10,33 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous" />
+    
+    <style>
+        .vertical-menu {
+            width: 200px ;
+            height: 150px ;
+            overflow-y: auto;
+
+        }
+        .vertical-menu a {
+            background-color: #eee;
+            color: black;
+            display: block;
+            padding: 12px ;
+            text-decoration: none ;
+        }
+
+        .vertical-menu a:hover {
+            background-color: #ccc;
+
+        }
+        .vertical-menu a.active {
+            background-color: #32343b;
+            color: rgb(244, 239, 239);
+
+
+        }
+    </style>
 
     
 
@@ -35,6 +62,8 @@
      <!--navigation bar and buttons - source Bootstrap website -->
 
     <!--<h3 text-align="center" >Assessment Record</h3>-->
+
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
             <span class="navbar-toggler-icon"></span>
@@ -52,6 +81,19 @@
         <option value = "Data Structures" selected>Data Structures</option>
         <option value = "Data Mining">Data Mining</option>
      </select>
+
+     <h3>Station ID</h3>
+    <div class="vertical-menu">
+        <a href="#" class = "Active"> Stn 1 </a>
+        <a href="#"> Stn 2 </a>
+        <a href="#"> Stn 3 </a>
+        <a href="#"> Stn 4 </a>
+        <a href="#"> Stn 5 </a>
+        <a href="#"> Stn 6 </a>
+        <a href="#"> Stn 7 </a>
+        <a href="#"> Stn 8 </a>
+        <a href="#"> Stn 9 </a>
+    </div>
 
     {% with messages = get_flashed_messages(with_categories=true)%}
     {% if messages %}

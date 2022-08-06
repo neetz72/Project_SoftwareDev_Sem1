@@ -12,13 +12,16 @@ views = Blueprint('views', __name__)
 def home():
     #data = request.form #contains all of the data that was sent as part of our form
     #print(data)
+    station_data = Ice.query.all()
+    for station in station_data:
+        print (station.station_id)
 
     if request.method == 'POST':
         stationId = request.form.get('stationId')#should be displayed in the frontend after getting queried from the db
         date = request.form.get('date')#selected by user
-        target = request.form.get('target')#should be queried from DB for the selected station 
+        #target = request.form.get('target')#should be queried from DB for the selected station 
         actual = request.form.get('actual') #entered by the user
-        variance = target - actual #calculate the variance and display to front-end
+      #  variance = target - actual #calculate the variance and display to front-end
 
         #Error Handling
 
@@ -32,14 +35,28 @@ def home():
         else: 
             #new_entry = Ice(date=date,target=target,actual=actual,variance = variance)
 
-            stn = Ice.query.filter_by(station_id = stationId)
+            stn = Ice.query.filter_by(station_id = stationId).first()
             if stn: 
-                new_entry = Ice(date=date,actual=actual)
-                tar = Ice.query.filter_by(station_id = stationId)
+                stn.date = date
+                stn.actual = int(actual)
+                db.session.commit()
+                #tar = Ice.query.filter_by(station_id = stationId).target
+                tar = int(stn.target)
+                ac = int (stn.actual)
+                variance =  ac - tar
+                stn.variance = int(variance)
+                db.session.commit()
 
-            db.session.add(new_entry) #will add new entry to the DB 
-            db.session.commit() #we ask the db to commit the changes made to the db and update itself
-            flash('Thank you for updating the Ice cream concentration, have a good fucking day.', category='success')
+
+
+            #db.session.add(new_entry) #will add new entry to the DB 
+            #db.session.commit() #we ask the db to commit the changes made to the db and update itself
+            if int(variance) > 0 : 
+                flash(f'The Variance is positive {variance}', category='success')
+            else: 
+                flash(f'The Variance is negative {variance}', category='error')
+
+            
 
         
 
@@ -70,10 +87,16 @@ def station():
         if station_id == None:
             flash('Enter station ID', category='Error')
         else: 
-            new_entry = Ice(station_id=station_id,target=target)
-            db.session.add(new_entry) #will add new entry to the DB 
-            db.session.commit() #we ask the db to commit the changes made to the db and update itself
-            flash('Thank you for adding a new station', category='success')
+            stn = Ice.query.filter_by(station_id = station_id).first()
+            if stn:
+                flash('Station already Exists!', category = 'Error')
+            else:
+                new_entry = Ice(station_id=station_id,target=target)
+                db.session.add(new_entry) #will add new entry to the DB 
+                db.session.commit() #we ask the db to commit the changes made to the db and update itself
+                flash('Thank you for adding a new station', category='success')
+
+            
 
 
     return render_template("station.html")
