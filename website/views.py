@@ -62,7 +62,7 @@ def home():
 
 
 
-    return render_template("app.html")
+    return render_template("app copy 2.html")
     
 @views.route('/developers')
 def developers():
@@ -85,11 +85,11 @@ def station():
     #variance = db.Column(db.Numeric)
     #date = db.Column(db.String(20)) #data type date   
         if station_id == None:
-            flash('Enter station ID', category='Error')
+            flash('Enter station ID', category='error')
         else: 
             stn = Ice.query.filter_by(station_id = station_id).first()
             if stn:
-                flash('Station already Exists!', category = 'Error')
+                flash('Station already Exists!', category = 'error')
             else:
                 new_entry = Ice(station_id=station_id,target=target)
                 db.session.add(new_entry) #will add new entry to the DB 
@@ -99,4 +99,4 @@ def station():
             
 
 
-    return render_template("station.html")
+    return render_template("station2.html")
