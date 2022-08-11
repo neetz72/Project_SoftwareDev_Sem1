@@ -23,8 +23,8 @@
 	/* Style the header */
 	.header {
 	  background-color: #f1f1f1;
-	  height: 3px;
-	  padding: 50px;
+	  height: 5px;
+	  padding: 100px;
 	  text-align: center;
 	}
 
@@ -32,7 +32,7 @@
 	/* Create three equal columns that floats next to each other */
 	.column {
 	  height:300px;
-	  float: right;
+	  float: left;
 	  width: 25%;
 	  
 	  
@@ -129,7 +129,7 @@ text-align:center;
     <div class = "collapse navbar-collapse" id="navbar">
         <div class = "navbar-nav"> 
             <a class="nav-item nav-link" id = "developers" href="/developers">Developers</a>
-            <a class="nav-item nav-link" id = "developers" href="/">Assessment Record</a>
+            <a class="nav-item nav-link" id = "developers" href="/station">Station</a>
         </div>
     </div>
     </nav>
@@ -178,20 +178,28 @@ text-align:center;
 
 
     <div class="header">
-        <h3>Add Station and Target</h3>
+        <h3>Assessment Record</h3>
       </div>
       <div class="row">
        <div class="column">
         </div>
         
         
-        <!--<div class="column">
+        <div class="column">
               <div class="vertical-menu"  id ="VM">
-              
+
+                
+
+                {%for stn in stndata %}
+                <!--var dog = {{stn.station_id}}-->
+                <a href="#" id = "{{stn.station_id}}" var target="{{stn.target}}" var vari="{{stn.variance}}" onclick=myFunction(this.id,target,vari)>{{stn.station_id}}</a>
+                
+                {% endfor %}
+
               </div>
-        </div>-->
+        </div>
         
-        <div class="column"></div>
+        <div class="column">
         <!--<div class="detailed_view">-->
     <!--The Form-->
 
@@ -206,26 +214,27 @@ text-align:center;
             <input type = "text" class = "form-control" id="stationId" name="stationId" placeholder="Enter Station ID" size="15"><br>
 
         </div>
-        <!--<div class="form-group">
+        <div class="form-group">
             <label for = "date">Date</label>
             <input type = "date" class = "form-control" id="date" name="date" placeholder="Enter Date" size="20"> <br>
 
-        </div>-->
+        </div>
         <div class="form-group">
             <label for = "target">Target</label>
-            <input type = "text" class = "form-control" id="target" name="target" placeholder="Enter Target" size="20"><br> 
+            <input type = "text" class = "form-control" id="target" name="target" placeholder="Display Target from DB" size="20">
+             
 
         </div>
-        <!--<div class="form-group">
+        <div class="form-group">
             <label for = "actual">Actual</label>
             <input type = "text" class = "form-control" id="actual" name="actual" placeholder="Enter Observed Value" size="20"> <br>
 
-        </div>-->
-        <!--<div class="form-group">
+        </div>
+        <div class="form-group">
             <label for = "variance">Variance</label>
             <input type = "text" class = "form-control" id="variance" name="variance" placeholder="Display Variance From Backend" size="18"> <br>
 
-        </div>-->
+        </div>
         <br />
         <button type="submit" class = "btn btn-primary">Submit</button>
 
@@ -241,6 +250,38 @@ text-align:center;
         
         document.getElementById("VM").innerHTML = text;
         </script>-->
+
+
+    <script>
+
+      document.getElementById("one").addEventListener("click", myFunction);
+
+      //function myFunction1() {
+       
+      //console.log(document.getElementById("#").innerText());
+
+
+      function myFunction(val, tar,vari) {
+      //console.log(val);
+      //console.log(tar);
+      //console.log(value);
+
+     // console.log(document.getElementById("stationId").value);
+      //console.log(document.innerText);
+      document.getElementById("stationId").value = val;
+      document.getElementById("target").value = tar;
+      document.getElementById("variance").value = vari;
+
+      }
+
+    
+      
+
+
+    </script>
+
+
+
 </body>
 
 </html>

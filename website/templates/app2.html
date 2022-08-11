@@ -156,7 +156,7 @@ text-align:center;
     {% if messages %}
         {% for category, message in messages%}
         {% if category == 'error' %}
-            <div class="alert alert-danger alert-dismissable fade show" role="alert">]
+            <div class="alert alert-danger alert-dismissable fade show" role="alert">
                 {{message}}
                 <button type="button" class="close" data-dismiss="alert">
                     <span aria-hidden="true">&times;</span>
@@ -164,7 +164,7 @@ text-align:center;
                 </button>
             </div>
             {% else %}
-            <div class="alert alert-success alert-dismissable fade show" role="alert">]
+            <div class="alert alert-success alert-dismissable fade show" role="alert">
                 {{message}}
                 <button type="button" class="close" data-dismiss="alert">
                     <span aria-hidden="true">&times;</span>
@@ -187,7 +187,16 @@ text-align:center;
         
         <div class="column">
               <div class="vertical-menu"  id ="VM">
-              
+
+                
+
+                {%for stn in stndata %}
+                <!--var dog = {{stn.station_id}}-->
+                <!--var vardb = "{{stn.variance}}"-->
+                <a href="#" id = "{{stn.station_id}}" var target="{{stn.target}}"  onclick=myFunction(this.id,target)>{{stn.station_id}}</a>
+                
+                {% endfor %}
+
               </div>
         </div>
         
@@ -213,7 +222,8 @@ text-align:center;
         </div>
         <div class="form-group">
             <label for = "target">Target</label>
-            <input type = "text" class = "form-control" id="target" name="target" placeholder="Display Target from DB" size="20"><br> 
+            <input type = "text" class = "form-control" id="target" name="target" placeholder="Display Target from DB" size="20">
+             
 
         </div>
         <div class="form-group">
@@ -221,17 +231,17 @@ text-align:center;
             <input type = "text" class = "form-control" id="actual" name="actual" placeholder="Enter Observed Value" size="20"> <br>
 
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <label for = "variance">Variance</label>
-            <input type = "text" class = "form-control" id="variance" name="variance" placeholder="Display Variance From Backend" size="18"> <br>
+            <input type = "text" class = "form-control" id="variance" name="variance" placeholder="Display Variance From Backend" size="20"> <br>
 
         </div>
-        <br />
+        <br />-->
         <button type="submit" class = "btn btn-primary">Submit</button>
 
     </form>
 
-    <script>
+    <!--<script>
         const stationId = ["N1232","S3452","F5632","S1232","A1567","M9832","N7584"];
         let text = "";
         
@@ -240,7 +250,51 @@ text-align:center;
         }
         
         document.getElementById("VM").innerHTML = text;
-        </script>
+        </script>-->
+
+
+    <script>
+
+      //document.getElementById("one").addEventListener("click", myFunction);
+
+      //function myFunction1() {
+       
+      //console.log(document.getElementById("#").innerText());
+
+
+      function myFunction(val, tar) {
+      //console.log(val);
+      //console.log(tar);
+      //console.log(vard);
+
+     // console.log(document.getElementById("stationId").value);
+      //console.log(document.innerText);
+      document.getElementById("stationId").value = val;
+      document.getElementById("target").value = tar;
+      //document.getElementById("variance").value = vard;
+
+      }
+
+    //   function myFunction2() {
+    //   //console.log(val);
+    //   //console.log(tar);
+    //   //console.log(value);
+
+    //  // console.log(document.getElementById("stationId").value);
+    //   //console.log(document.innerText);
+     
+    //   document.getElementById("variance").value = vari;
+
+    //   }
+
+    
+      
+
+
+    </script>
+
+
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-#lets add some authentication 
+#FUTURE SCOPE
 
 from flask import Blueprint
 

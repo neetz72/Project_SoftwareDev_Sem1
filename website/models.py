@@ -11,7 +11,7 @@ from sqlalchemy.sql import func
    # created_date = db.Column(db.DateTime(timezone=True), default=func.now())
 class Ice(db.Model):
     station_id = db.Column(db.String(20), primary_key=True, unique=True)
-    target = db.Column(db.Integer) #float
-    actual = db.Column(db.Integer)
-    variance = db.Column(db.Integer)
+    target = db.Column(db.Float) #float
+    actual = db.Column(db.Float)
+    variance = db.Column(db.Float)
     date = db.Column(db.String(20)) #data type date   
