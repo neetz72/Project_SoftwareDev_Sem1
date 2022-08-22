@@ -1,0 +1,13 @@
+name: Testing
+on: push # will run everytime on push to git
+
+jobs: 
+  test_project:
+    runs-on: windows
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run validation on UI
+      run:
+        pip3 install --selenium
+        python3 tests.py test
+        

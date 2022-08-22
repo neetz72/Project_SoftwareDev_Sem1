@@ -1,4 +1,5 @@
-#contains the url endpoints 
+
+#THIS IS THE CONTROLLER
 
 from statistics import variance
 from flask import Blueprint, render_template, request, flash

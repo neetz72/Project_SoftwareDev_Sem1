@@ -1,3 +1,4 @@
+#THIS IS THE MODEL
 #contains database models 
 
 from . import db
